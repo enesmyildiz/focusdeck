@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusDeck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><img src="icons/check.svg" alt="" /><span>FocusDeck</span></div>
+      <div class="actions">
+        <button id="exportBtn" title="Export JSON">Export</button>
+        <button id="importBtn" title="Import JSON">Import</button>
+        <input id="importFile" type="file" accept="application/json" hidden/>
+      </div>
+    </header>
+
+    <section class="composer card">
+      <input id="taskTitle" placeholder="What needs to be done? (Press Enter to add)" />
+      <div class="row">
+        <select id="priority">
+          <option value="normal">Priority: Normal</option>
+          <option value="high">Priority: High</option>
+          <option value="low">Priority: Low</option>
+        </select>
+        <input id="due" type="date"/>
+        <input id="tags" placeholder="Tags (comma separated)" />
+        <button id="addBtn">Add Task</button>
+      </div>
+      <small>Tips: ⏎ add • Ctrl+K focus search • Drag to reorder • Type <code>#tag</code> to filter</small>
+    </section>
+
+    <section class="controls card">
+      <input id="search" placeholder="Search (title, tags)" />
+      <div class="pills">
+        <button data-filter="all" class="pill active">All</button>
+        <button data-filter="today" class="pill">Today</button>
+        <button data-filter="overdue" class="pill">Overdue</button>
+        <button data-filter="high" class="pill">High</button>
+        <button data-filter="done" class="pill">Done</button>
+      </div>
+    </section>
+
+    <main class="lists">
+      <div class="card">
+        <h2>Tasks</h2>
+        <ul id="todoList" class="list" aria-live="polite"></ul>
+      </div>
+      <div class="card">
+        <h2>Completed</h2>
+        <ul id="doneList" class="list" aria-live="polite"></ul>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <small>Unique To‑Do app by Enes — stores data in your browser (localStorage).</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
